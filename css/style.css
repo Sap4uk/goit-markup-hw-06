@@ -568,9 +568,10 @@ footer {
 
   color: var(--primary-white-color);
   background-color: var(--accent-color);
-
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
+
   border-radius: 4px;
+  border: none;
   cursor: pointer;
 }
 
@@ -942,10 +943,16 @@ textarea {
   transform: translateY(-30%);
 }
 
-.form-input:focus ~ .form-icon {
+.form-field:focus-within > .form-icon {
   color: var(--accent-color);
   transition: color 250ms var(--timing-animation);
 }
+
+/* .form-input:focus ~ .form-icon {
+  color: var(--accent-color);
+  transition: color 250ms var(--timing-animation);
+} */
+
 .form-icon {
   fill: currentColor;
 }
@@ -981,6 +988,7 @@ textarea {
 }
 
 .form-conditions {
+  display: block;
   text-align: center;
   margin-bottom: 30px;
 }
@@ -1013,7 +1021,7 @@ textarea {
   color: rgba(117, 117, 117, 0.5);
 }
 
-.conditions-lable {
+.conditions-label {
   font-family: Roboto;
   font-style: normal;
   font-weight: 400;
@@ -1025,7 +1033,41 @@ textarea {
   color: var(--title-text-color);
 }
 
-.conditions-contract {
+.checkbox {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+  clip: rect(0 0 0 0);
+  overflow: hidden;
+}
+
+.checkbox:checked + .conditions-icon::before {
+  background-color: var(--accent-color);
+  border-color: var(--accent-color);
+  background-image: url(../images/icon/icon\ check.svg);
+  background-size: contain;
+  background-origin: border-box;
+  transition: background-color 250ms var(--timing-animation),
+    border-color 250ms var(--timing-animation);
+}
+
+.conditions-icon::before {
+  content: "";
+  display: inline-block;
+
+  width: 16px;
+  height: 15px;
+
+  border: 2px solid black;
+  border-radius: 2px;
+
+  transform: translateY(15%);
+}
+
+.form-conditions > a {
   font-style: normal;
   font-weight: 400;
   font-size: 14px;
